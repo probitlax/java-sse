@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  sytac:
+    image: sytacdocker/video-stream-server:latest
+    restart: always
+    container_name: sytac-video-stream
+    ports:
+    - '8080:8080'
+  app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: data-harvester
+    image: data-harvester
+    depends_on:
+      - sytac
+    ports:
+      - '8083:8081'
+    environment:
+      PLATFORM_PROPERTIES_PLATFORMS_SYTFLIX_HOST: "http://sytac:8080/sytflix"
+      PLATFORM_PROPERTIES_PLATFORMS_SYTAZON_HOST: "http://sytac:8080/sytazon"
+      PLATFORM_PROPERTIES_PLATFORMS_SYSNEY_HOST: "http://sytac:8080/sysney"

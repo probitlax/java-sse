@@ -1,0 +1,21 @@
+server:
+  servlet:
+    context-path: /data-harvester-app
+  port: 8081
+
+platform-properties:
+  connectionTimeout: 30000
+  readTimeout: 15000
+  platforms:
+    SYTFLIX:
+      host: "http://localhost:8080/sytflix"
+      username: "sytac"
+      password: "4p9g-Dv7T-u8fe-iz6y-SRW2" # Password must be stored in Vault
+    SYTAZON:
+      host: "http://localhost:8080/sytazon"
+      username: "sytac"
+      password: "4p9g-Dv7T-u8fe-iz6y-SRW2" # Password must be stored in Vault
+    SYSNEY:
+      host: "http://localhost:8080/sysney"
+      username: "sytac"
+      password: "4p9g-Dv7T-u8fe-iz6y-SRW2" # Password must be stored in Vault
